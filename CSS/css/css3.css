@@ -1,0 +1,51 @@
+/*
+------------- CSS Tutorial Reference----------------------------------------------
+http://www.sitepoint.com/web-foundations/specificity/
+
+https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+
+*/
+/* 
+    Created on : Jan 29, 2015, 11:05:08 PM
+    Author     : Zoran
+*/
+
+.wrapper {
+    width:1020px;
+    margin: 50px auto;
+}
+
+/*
+General Sibling Combinator
+-----All p tags after h2 block, which is in the same lavel, can be interupted by other tags 
+*/
+h2 ~ p {
+    color:green;
+}
+
+
+/*
+Adjacent Sibling Combinator
+-----All p tags except first in every block
+*/
+/*
+p + p {
+    color:red;
+}
+*/
+
+
+/*
+Child Combinator
+-----All p tags inside DIV block
+*/
+/*
+div > p {
+    color:blue;
+}
+*/
+
+
+

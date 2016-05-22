@@ -1,0 +1,78 @@
+//https://www.youtube.com/watch?v=QPO9HJjUktk
+
+//http://sass-lang.com/guide
+
+//http://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-selector
+// see if, for, each, while
+
+//http://sass-lang.com/styleguide
+
+//http://sass-lang.com/documentation/Sass/Script/Functions.html
+
+//----------- Imports
+//------------------------------------------------------------------------------
+/*
+@import takes a filename to import. By default, it looks for a Sass file to 
+import directly, but there are a few circumstances under which it will 
+compile to a CSS @import rule:
+*/
+//would both import the file foo.scss, whereas
+@import "foo.css";            //If the file’s extension is .css.
+@import "foo" screen;         //If the filename begins with http://.
+@import "http://foo.com/bar"; //If the filename is a url().
+@import url(foo);             //If the @import has any media queries.
+
+/*
+Imports may contain #{} interpolation, but only with certain restrictions. 
+It’s not possible to dynamically import a Sass file based on a variable; 
+interpolation is only for CSS imports. As such, it only works with url() 
+imports. 
+For example:
+*/
+$family: unquote("Droid+Sans");
+@import url("http://fonts.googleapis.com/css?family=#{$family}");
+
+//would compile to
+@import url("http://fonts.googleapis.com/css?family=Droid+Sans");
+
+
+//-------Using the media-queries
+//------------------------------------------------------------------------------
+
+.sidebar {
+  width: 300px;
+  @media screen and (orientation: landscape) {
+    width: 500px;
+  }
+}
+
+//is compiled to:
+.sidebar {
+  width: 300px; 
+}
+@media screen and (orientation: landscape) {
+    .sidebar {
+      width: 500px; 
+    } 
+}
+/*
+Finally, @media queries can contain SassScript expressions (including variables, 
+functions, and operators) in place of the feature names and feature values. 
+For example:
+*/
+$media: screen;
+$feature: -webkit-min-device-pixel-ratio;
+$value: 1.5;
+
+@media #{$media} and ($feature: $value) {
+  .sidebar {
+    width: 500px;
+  }
+}
+
+//is compiled to:
+@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .sidebar {
+    width: 500px; 
+   } 
+}

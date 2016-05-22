@@ -1,0 +1,46 @@
+// Global variables 
+
+// Fonts 
+$font-family: Arial;
+
+$font-heading-weight: 800;
+$font-alert-weight:800;
+
+// Font size
+@mixin font-size-small {font-size: 12px}
+@mixin font-size-regular {font-size: 16px}	
+@mixin font-size-large {font-size: 24px}
+@mixin font-size-x-large {font-size: 32px}
+@inmix font-size-xx-large {font-size: 48px}
+@mixin font-size-xxx-large {font-size: 64px}
+//using:
+//@include font-size-small;
+
+// Colors
+/*
+$color-shadow:rgba($black, .125);
+$color-primary:	
+$color-accent:	
+$color-background:	
+$color-background-shade:
+$color-background-invert:
+$color-text:
+$color-text-weak:	
+$color-text-strong:	
+$color-text-heading:	
+$color-text-invert: rgba($color-background, .75);
+$color-text-strong-invert:	$color-background;
+$color-text-link:	$color-primary;
+$color-text-link-visited:
+$color-text-link-hover:	
+$color-border:
+*/
+$font-color:#222; 
+
+$success-color:#b7c11e;
+$warning-color:#23a38f;
+$error-color:#f0563d;
+
+$shadow-color: rgba(0, 0, 0, .2);
+
+//Layout

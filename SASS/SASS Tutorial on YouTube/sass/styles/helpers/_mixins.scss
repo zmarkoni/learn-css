@@ -1,0 +1,83 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+         -o-border-radius: $radius;
+            border-radius: $radius;
+}
+
+@mixin box-shadow($x, $y, $spread, $color){
+    -webkit-box-shadow: $x $y $spread $color;
+       -moz-box-shadow: $x $y $spread $color;
+        -ms-box-shadow: $x $y $spread $color;
+         -o-box-shadow: $x $y $spread $color;
+            box-shadow: $x $y $spread $color;
+}
+
+//Variable Arguments
+//These arguments look just like normal arguments, but are followed by ...
+@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+//Call like this
+//$values: #ff0000, #00ff00, #0000ff;
+//.primary {
+//  @include colors($values...);
+//}
+
+
+//ou can use variable arguments to wrap a mixin and add additional styles 
+//without changing the argument signature of the mixin
+
+@mixin wrapped-stylish-mixin($args...) {
+  font-weight: bold;
+  @include stylish-mixin($args...);
+}
+//call like this
+//.stylish {
+  // The $width argument will get passed on to "stylish-mixin" as a keyword
+  //@include wrapped-stylish-mixin(#00ff00, $width: 100px);
+//}
+
+
+//If there is no parent selector, the value of & will be null. 
+//This means you can use it in a mixin to detect whether a parent selector exists:
+@mixin does-parent-exist {
+  @if & {
+    &:hover {
+      color: red;
+    }
+  } @else {
+    a {
+      color: red;
+    }
+  }
+}
+
+//Mixin definitions can also include other mixins. For example:
+@mixin highlighted-background { background-color: #fc0; }
+@mixin header-text { font-size: 20px; }
+
+@mixin compound {
+  @include highlighted-background;
+  @include header-text;
+}
+
+
+
+
+
+@mixin clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}
+

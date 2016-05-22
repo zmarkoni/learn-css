@@ -1,0 +1,19 @@
+body {
+    font-family: $font-family;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+   font-weight: $font-heading-weight; 
+}
+
+/* Referencing Parent Selectors: & */
+a {
+  font-weight: bold;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+  body.firefox & { font-weight: normal; }
+}

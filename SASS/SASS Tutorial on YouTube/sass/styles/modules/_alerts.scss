@@ -1,0 +1,54 @@
+/* For extending we use '%'  */
+%alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    font-weight: $font-alert-weight;
+    color:$font-color;
+    border: 2px solid #eee;
+    
+    /* include mixin */
+    @include border-radius(5px);
+    @include box-shadow(1px, 1px, 1px, $shadow-color);
+    
+    /* Target Nesting element p within DIV */
+    p {
+        margin: 0;
+        @include does-parent-exist;
+        //@include font-size-large;
+        text-shadow: shade(red,50%);
+    }
+}
+
+.alert {
+    /* Inherit class %alert*/
+    @extend %alert;
+}
+
+.success {
+    @extend %alert;
+    border-color: $success-color;
+    
+    /* use function opacity */
+    background: opacity($success-color, .8);
+}
+
+.warning {
+    @extend %alert;
+    border-color: $warning-color;
+    background: opacity($warning-color, .8);
+}
+
+.error{
+    @extend %alert;
+    border-color: $error-color;
+    background: opacity($error-color, .8);
+}
+
+#main {
+  $width: 5em !global; /* !global flag, variable is global */
+  width: $width;
+}
+
+#sidebar {
+  width: $width;
+}
